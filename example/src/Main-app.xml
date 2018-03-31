@@ -222,10 +222,18 @@
 			
 		]]></manifestAdditions>
     </android>
+
+    <icon>
+        <image76x76>AppIcon76x76~ipad.png</image76x76>
+        <image120x120>AppIcon60x60@2x.png</image120x120>
+        <image152x152>AppIcon76x76@2x~ipad.png</image152x152>
+        <image167x167>AppIcon83.5x83.5@2x~ipad.png</image167x167>
+        <image180x180>AppIcon60x60@3x.png</image180x180>
+    </icon>
+
     <!-- iOS specific capabilities -->
     <iPhone>
         <!-- A list of plist key/value pairs to be added to the application Info.plist -->
-        <assetsCar>Assets.car</assetsCar>
         <InfoAdditions>
             <![CDATA[
             <key>UIDeviceFamily</key>

@@ -38,16 +38,10 @@ public class StarlingRoot extends Sprite {
     }
 
     private function onStateChange(event:StateEvent):void {
-        trace(event);
-/*        statusLabel.text = event.toString();
-        return;*/
         switch (event.state) {
             case BatteryState.CHARGING:
                 statusLabel.text = "New State: Charging";
                 break;
-/*            case BatteryState.FULL:
-                statusLabel.text = "New State: Full";
-                break;*/
             case BatteryState.UNPLUGGED:
                 statusLabel.text = "New State: Unplugged";
                 break;
@@ -58,7 +52,6 @@ public class StarlingRoot extends Sprite {
     }
 
     private function onBatteryChange(event:BatteryEvent):void {
-        trace(event);
         statusLabel.text = event.isLow ? "Battery is low" : "Battery is okay";
     }
 

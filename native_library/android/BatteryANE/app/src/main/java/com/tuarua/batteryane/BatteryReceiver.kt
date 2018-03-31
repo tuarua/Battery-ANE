@@ -27,7 +27,6 @@ class BatteryReceiver(override var context: FREContext?) : BroadcastReceiver(), 
     private val gson = Gson()
     override fun onReceive(context: Context?, intent: Intent?) {
         val i = intent ?: return
-        trace(i.action)
         sendEvent(BatteryEvent.ON_CHANGE, gson.toJson(BatteryEvent((i.action == Intent.ACTION_BATTERY_LOW))))
     }
 

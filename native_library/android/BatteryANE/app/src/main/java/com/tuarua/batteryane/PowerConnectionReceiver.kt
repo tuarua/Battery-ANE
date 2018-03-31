@@ -28,7 +28,6 @@ class PowerConnectionReceiver(override var context: FREContext?) : BroadcastRece
     private val gson = Gson()
     override fun onReceive(context: Context?, intent: Intent?) {
         val i = intent ?: return
-        trace(i.action)
         var state = BatteryState.UNKNOWN
         when (i.action) {
             Intent.ACTION_POWER_CONNECTED -> state = BatteryState.CHARGING

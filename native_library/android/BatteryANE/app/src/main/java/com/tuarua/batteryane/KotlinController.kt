@@ -35,8 +35,6 @@ class KotlinController : FreKotlinMainController {
     private var batteryLowFilter: IntentFilter? = null
     private var batteryOkayFilter: IntentFilter? = null
 
-    // https://developer.android.com/training/monitoring-device-state/battery-monitoring.html
-
     private var powerConnectionFilter: IntentFilter? = null
     private var powerDisconnectionFilter: IntentFilter? = null
 
