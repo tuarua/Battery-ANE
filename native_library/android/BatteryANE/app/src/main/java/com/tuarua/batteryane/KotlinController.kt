@@ -98,15 +98,48 @@ class KotlinController : FreKotlinMainController {
                 this.context?.activity?.applicationContext?.unregisterReceiver(batteryReceiver)
                 batteryLowFilter = null
                 batteryOkayFilter = null
+                batteryReceiver = null
             }
             StateEvent.ON_CHANGE -> {
                 this.context?.activity?.applicationContext?.unregisterReceiver(powerConnectionReceiver)
                 powerConnectionFilter = null
                 powerDisconnectionFilter = null
+                powerConnectionReceiver = null
             }
         }
 
         return null
+    }
+
+    override fun dispose() {
+        super.dispose()
+        pauseReceivers()
+    }
+
+    override fun onPaused() {
+        super.onPaused()
+        pauseReceivers()
+    }
+
+    private fun pauseReceivers() {
+        if (batteryReceiver != null) {
+            this.context?.activity?.applicationContext?.unregisterReceiver(batteryReceiver)
+        }
+        if (powerConnectionReceiver != null) {
+            this.context?.activity?.applicationContext?.unregisterReceiver(powerConnectionReceiver)
+        }
+    }
+
+    override fun onResumed() {
+        super.onResumed()
+        if (batteryReceiver != null && batteryLowFilter != null && batteryOkayFilter != null) {
+            context?.activity?.applicationContext?.registerReceiver(batteryReceiver, batteryLowFilter)
+            context?.activity?.applicationContext?.registerReceiver(batteryReceiver, batteryOkayFilter)
+        }
+        if (powerConnectionReceiver != null && powerConnectionFilter != null && powerDisconnectionFilter != null) {
+            context?.activity?.applicationContext?.registerReceiver(powerConnectionReceiver, powerConnectionFilter)
+            context?.activity?.applicationContext?.registerReceiver(powerConnectionReceiver, powerDisconnectionFilter)
+        }
     }
 
     override val TAG: String
