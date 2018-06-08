@@ -17,6 +17,6 @@ package com.tuarua.batteryane.data
 
 data class BatteryEvent(val isLow: Boolean) {
     companion object {
-        const val ON_CHANGE: String = "BatteryEvent.OnChange"
+        const val ON_CHANGE = "BatteryEvent.OnChange"
     }
 }

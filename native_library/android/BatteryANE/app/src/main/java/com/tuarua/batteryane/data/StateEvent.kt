@@ -17,6 +17,6 @@ package com.tuarua.batteryane.data
 
 data class StateEvent(val state: Int) {
     companion object {
-        const val ON_CHANGE: String = "StateEvent.OnChange"
+        const val ON_CHANGE = "StateEvent.OnChange"
     }
 }

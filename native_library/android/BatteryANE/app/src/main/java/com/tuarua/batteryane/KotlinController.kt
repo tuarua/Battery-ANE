@@ -63,7 +63,7 @@ class KotlinController : FreKotlinMainController {
     }
 
     fun addEventListener(ctx: FREContext, argv: FREArgv): FREObject? {
-        argv.takeIf { argv.size > 0 } ?: return ArgCountException().getError(Thread.currentThread().stackTrace)
+        argv.takeIf { argv.size > 0 } ?: return FreArgException("addEventListener")
         val type = String(argv[0]) ?: return null
         if (asListeners.contains(type)) return null
         asListeners.add(type)
@@ -88,7 +88,7 @@ class KotlinController : FreKotlinMainController {
     }
 
     fun removeEventListener(ctx: FREContext, argv: FREArgv): FREObject? {
-        argv.takeIf { argv.size > 0 } ?: return ArgCountException().getError(Thread.currentThread().stackTrace)
+        argv.takeIf { argv.size > 0 } ?: return FreArgException("removeEventListener")
         val type = String(argv[0]) ?: return null
         if (!asListeners.contains(type)) return null
         asListeners.remove(type)
