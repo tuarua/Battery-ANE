@@ -41,7 +41,7 @@ public class SwiftController: NSObject {
         case .unplugged:
             props["state"] = 3
         }
-        self.sendEvent(name: StateEvent.ON_CHANGE, value: JSON(props).description)
+        self.dispatchEvent(name: StateEvent.ON_CHANGE, value: JSON(props).description)
     }
     
     @objc func batteryLevelDidChange(_ notification: Notification) {
@@ -57,10 +57,10 @@ public class SwiftController: NSObject {
         var props: [String: Any] = Dictionary()
         if currentLevel == 0.15 && isDecreasing {
             props["isLow"] = true
-            self.sendEvent(name: BatteryEvent.ON_CHANGE, value: JSON(props).description)
+            self.dispatchEvent(name: BatteryEvent.ON_CHANGE, value: JSON(props).description)
         } else if currentLevel == 0.16 && !isDecreasing {
             props["isLow"] = false
-            self.sendEvent(name: BatteryEvent.ON_CHANGE, value: JSON(props).description)
+            self.dispatchEvent(name: BatteryEvent.ON_CHANGE, value: JSON(props).description)
         }
         
     }
@@ -68,7 +68,7 @@ public class SwiftController: NSObject {
     func addEventListener(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         guard argc > 0,
             let type = String(argv[0]) else {
-                return ArgCountError(message: "addEventListener").getError(#file, #line, #column)
+                return FreArgError(message: "addEventListener").getError(#file, #line, #column)
         }
         if asListeners.contains(type) {
             return nil
@@ -96,7 +96,7 @@ public class SwiftController: NSObject {
     func removeEventListener(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         guard argc > 0,
             let type = String(argv[0]) else {
-                return ArgCountError(message: "removeEventListener").getError(#file, #line, #column)
+                return FreArgError(message: "removeEventListener").getError(#file, #line, #column)
         }
         if !asListeners.contains(type) {
             return nil

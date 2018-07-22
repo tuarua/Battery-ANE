@@ -43,7 +43,8 @@ class KotlinController : FreKotlinMainController {
     }
 
     fun getState(ctx: FREContext, argv: FREArgv): FREObject? {
-        val batteryStatus = context?.activity?.applicationContext?.registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+        val batteryStatus = context?.activity?.applicationContext?.registerReceiver(null,
+                IntentFilter(Intent.ACTION_BATTERY_CHANGED))
         val status = batteryStatus?.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
         var state = BatteryState.UNKNOWN
         when (status) {
@@ -55,8 +56,8 @@ class KotlinController : FreKotlinMainController {
     }
 
     fun getLevel(ctx: FREContext, argv: FREArgv): FREObject? {
-        val batteryStatus = context?.activity?.applicationContext?.registerReceiver(null, IntentFilter(Intent
-                .ACTION_BATTERY_CHANGED)) ?: return null
+        val batteryStatus = context?.activity?.applicationContext?.registerReceiver(null,
+                IntentFilter(Intent.ACTION_BATTERY_CHANGED)) ?: return null
         val level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
         val scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
         return (level / scale.toFloat()).toFREObject()

@@ -14,7 +14,7 @@
             <entry library-name="BatteryANE" library-level="project">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-name="com.google.code.gson.gson-2.8.1" library-level="project">
+            <entry library-name="com.google.code.gson.gson-2.8.4" library-level="project">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -113,5 +113,6 @@
     <orderEntry type="library" exported="" name="com.tuarua.frekotlin" level="project" />
     <orderEntry type="library" exported="" name="BatteryANE" level="project" />
     <orderEntry type="library" exported="" name="com.google.code.gson.gson-2.8.1" level="project" />
+    <orderEntry type="library" exported="" name="com.google.code.gson.gson-2.8.4" level="project" />
   </component>
 </module>
