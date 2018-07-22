@@ -33,7 +33,7 @@ class PowerConnectionReceiver(override var context: FREContext?) : BroadcastRece
             Intent.ACTION_POWER_CONNECTED -> state = BatteryState.CHARGING
             Intent.ACTION_POWER_DISCONNECTED -> state = BatteryState.UNPLUGGED
         }
-        sendEvent(StateEvent.ON_CHANGE, gson.toJson(StateEvent(state)))
+        dispatchEvent(StateEvent.ON_CHANGE, gson.toJson(StateEvent(state)))
     }
 
     override val TAG: String
