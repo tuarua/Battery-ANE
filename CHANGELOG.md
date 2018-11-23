@@ -1,9 +1,12 @@
+### 0.1.0
+- iOS: Support AIR 32
+
 ### 0.0.6
 - AND: Updated to FreKotlin 1.5.0
 
 ### 0.0.5 
 - AND: Updated to FreKotlin 1.4.0
-- OSX/iOS: Updated to FreSwift 2.5.0
+- iOS: Updated to FreSwift 2.5.0
 
 ### 0.0.4 
 - Updated to AIR 30
