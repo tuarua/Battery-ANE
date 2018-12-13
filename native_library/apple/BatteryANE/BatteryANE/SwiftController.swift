@@ -17,7 +17,7 @@ import Foundation
 import FreSwift
 
 public class SwiftController: NSObject {
-    public var TAG: String? = "SwiftController"
+    public static var TAG = "SwiftController"
     public var context: FreContextSwift!
     public var functionsToSet: FREFunctionMap = [:]
     private var asListeners: [String] = []
@@ -79,12 +79,12 @@ public class SwiftController: NSObject {
         case BatteryEvent.ON_CHANGE:
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(batteryLevelDidChange),
-                                                   name: NSNotification.Name.UIDeviceBatteryLevelDidChange,
+                                                   name: UIDevice.batteryLevelDidChangeNotification,
                                                    object: nil)
         case StateEvent.ON_CHANGE:
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(batteryStateDidChange),
-                                                   name: NSNotification.Name.UIDeviceBatteryStateDidChange,
+                                                   name: UIDevice.batteryStateDidChangeNotification,
                                                    object: nil)
         default:
              break
@@ -105,11 +105,11 @@ public class SwiftController: NSObject {
         switch type {
         case BatteryEvent.ON_CHANGE:
             NotificationCenter.default.removeObserver(self,
-                                                      name: NSNotification.Name.UIDeviceBatteryLevelDidChange,
+                                                      name: UIDevice.batteryLevelDidChangeNotification,
                                                       object: nil)
         case StateEvent.ON_CHANGE:
              NotificationCenter.default.removeObserver(self,
-                                                       name: NSNotification.Name.UIDeviceBatteryStateDidChange,
+                                                       name: UIDevice.batteryStateDidChangeNotification,
                                                        object: nil)
         default:
             break
