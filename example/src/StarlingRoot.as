@@ -1,9 +1,9 @@
 package {
 
 import com.tuarua.BatteryANE;
-import com.tuarua.batteryane.BatteryState;
-import com.tuarua.batteryane.events.BatteryEvent;
-import com.tuarua.batteryane.events.StateEvent;
+import com.tuarua.battery.BatteryState;
+import com.tuarua.battery.events.BatteryEvent;
+import com.tuarua.battery.events.StateEvent;
 
 import flash.desktop.NativeApplication;
 import flash.events.Event;
