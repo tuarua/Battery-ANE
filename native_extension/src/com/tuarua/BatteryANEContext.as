@@ -14,8 +14,8 @@
  *  limitations under the License.
  */
 package com.tuarua {
-import com.tuarua.batteryane.events.BatteryEvent;
-import com.tuarua.batteryane.events.StateEvent;
+import com.tuarua.battery.events.BatteryEvent;
+import com.tuarua.battery.events.StateEvent;
 
 import flash.events.StatusEvent;
 import flash.external.ExtensionContext;
@@ -69,9 +69,7 @@ public class BatteryANEContext {
     }
 
     public static function dispose():void {
-        if (!_context) {
-            return;
-        }
+        if (_context == null) return;
         _isDisposed = true;
         trace("[" + NAME + "] Unloading ANE...");
         _context.removeEventListener(StatusEvent.STATUS, gotEvent);

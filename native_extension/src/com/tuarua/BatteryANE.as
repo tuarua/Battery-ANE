@@ -27,19 +27,16 @@ public class BatteryANE extends EventDispatcher {
         if (_battery) {
             throw new Error(BatteryANEContext.NAME + " is a singleton, use .battery");
         }
-
         if (BatteryANEContext.context) {
             var theRet:* = BatteryANEContext.context.call("init");
-            if (theRet is ANEError) {
-                throw theRet as ANEError;
-            }
+            if (theRet is ANEError) throw theRet as ANEError;
             _isInited = theRet as Boolean;
         }
         _battery = this;
     }
 
     public static function get battery():BatteryANE {
-        if (!_battery) {
+        if (_battery == null) {
             new BatteryANE();
         }
         return _battery;
@@ -57,11 +54,8 @@ public class BatteryANE extends EventDispatcher {
     override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0,
                                               useWeakReference:Boolean = false):void {
         super.addEventListener(type, listener, useCapture, priority, useWeakReference);
-        if (_isInited) {
-            BatteryANEContext.context.call("addEventListener", type);
-        } else {
-            trace("You need to init before adding EventListeners");
-        }
+        if (!safetyCheck()) return;
+        BatteryANEContext.context.call("addEventListener", type);
     }
 
     /**
@@ -73,27 +67,20 @@ public class BatteryANE extends EventDispatcher {
      */
     override public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void {
         super.removeEventListener(type, listener, useCapture);
-        if (_isInited) {
-            BatteryANEContext.context.call("removeEventListener", type);
-        } else {
-            trace("You need to init before removing EventListeners");
-        }
+        if (!safetyCheck()) return;
+        BatteryANEContext.context.call("removeEventListener", type);
     }
 
 
     public function get state():int {
         var theRet:* = BatteryANEContext.context.call("getState");
-        if (theRet is ANEError) {
-            throw theRet as ANEError;
-        }
+        if (theRet is ANEError) throw theRet as ANEError;
         return theRet as int;
     }
 
     public function get level():Number {
         var theRet:* = BatteryANEContext.context.call("getLevel");
-        if (theRet is ANEError) {
-            throw theRet as ANEError;
-        }
+        if (theRet is ANEError) throw theRet as ANEError;
         return theRet as Number;
     }
 

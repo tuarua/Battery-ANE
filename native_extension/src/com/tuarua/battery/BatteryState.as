@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.batteryane {
+package com.tuarua.battery {
 public final class BatteryState {
     public static const UNKNOWN:int = 0;
     public static const CHARGING:int = 1;
