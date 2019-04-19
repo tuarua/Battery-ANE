@@ -20,12 +20,11 @@ public class SwiftController: NSObject {
     public static var TAG = "SwiftController"
     public var context: FreContextSwift!
     public var functionsToSet: FREFunctionMap = [:]
-    private var asListeners: [String] = []
+    private var asListeners = [String]()
     private var currentLevel: Float = 1.0
     
     func initController(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         UIDevice.current.isBatteryMonitoringEnabled = true
-        
         return true.toFREObject()
     }
     
