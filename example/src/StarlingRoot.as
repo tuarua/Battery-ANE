@@ -29,12 +29,14 @@ public class StarlingRoot extends Sprite {
     }
 
     public function start():void {
-        battery = BatteryANE.battery;
-        battery.addEventListener(BatteryEvent.ON_CHANGE, onBatteryChange);
-        battery.addEventListener(StateEvent.ON_CHANGE, onStateChange);
-
-        initMenu();
-
+        try {
+            battery = BatteryANE.battery;
+            battery.addEventListener(BatteryEvent.ON_CHANGE, onBatteryChange);
+            battery.addEventListener(StateEvent.ON_CHANGE, onStateChange);
+            initMenu();
+        } catch (e:Error) {
+            trace(e)
+        }
     }
 
     private function onStateChange(event:StateEvent):void {

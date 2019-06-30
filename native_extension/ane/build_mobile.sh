@@ -5,14 +5,11 @@ echo "Setting path to current directory to:"
 pathtome=$0
 pathtome="${pathtome%/*}"
 
-
-echo $pathtome
-
 PROJECTNAME=BatteryANE
 fwSuffix="_FW"
 libSuffix="_LIB"
 
-AIR_SDK="/Users/eoinlandy/SDKs/AIRSDK_32"
+AIR_SDK="/Users/eoinlandy/SDKs/AIRSDK_33"
 echo $AIR_SDK
 
 if [ ! -d "$pathtome/../../native_library/apple/$PROJECTNAME/Build/Products/Release-iphonesimulator/" ]; then
@@ -140,7 +137,7 @@ echo "Building ANE."
 -C "$pathtome/platforms/android" "library.swf" "classes.jar" \
 com.tuarua.$PROJECTNAME-res/. \
 -platformoptions "$pathtome/platforms/android/platform.xml" \
--platform Android-x86 \
+-platform Android-ARM64 \
 -C "$pathtome/platforms/android" "library.swf" "classes.jar" \
 com.tuarua.$PROJECTNAME-res/. \
 -platformoptions "$pathtome/platforms/android/platform.xml" \
