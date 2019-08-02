@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/32.0">
+<application xmlns="http://ns.adobe.com/air/application/33.0">
 
 	<id>com.tuarua.batteryanesample</id>
 	<filename>BatteryANESample</filename>
 	<name>BatteryANESample</name>
-	<versionNumber>1.1.0</versionNumber>
+	<versionNumber>1.2.0</versionNumber>
 
 	<initialWindow>
 		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
@@ -19,6 +19,7 @@
 <android>
         <manifestAdditions><![CDATA[
 			<manifest android:installLocation="auto">
+			    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="28" />
 			    <uses-permission android:name="android.permission.INTERNET"/>
 			</manifest>
 			
@@ -33,24 +34,6 @@
         <image180x180>AppIcon60x60@3x.png</image180x180>
     </icon>
 
-    <!-- iOS specific capabilities -->
-    <iPhone>
-        <!-- A list of plist key/value pairs to be added to the application Info.plist -->
-        <InfoAdditions>
-            <![CDATA[
-            <key>UIDeviceFamily</key>
-            <array>
-                <!-- iPhone and iPod touch devices -->
-                <string>1</string>
-                <!-- iPad devices -->
-                <string>2</string>
-            </array>
-            <key>MinimumOSVersion</key>
-            <string>9.0</string>
-            ]]>
-        </InfoAdditions>
-        <requestedDisplayResolution>high</requestedDisplayResolution>
-    </iPhone>
     <extensions>
     	<extensionID>com.tuarua.frekotlin</extensionID>
         <extensionID>com.google.code.gson.gson</extensionID>

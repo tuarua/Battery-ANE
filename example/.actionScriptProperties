@@ -40,7 +40,7 @@
       </libraryPathEntry>
       <libraryPathEntry kind="3" linkType="1" path="libs/starling.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="5" linkType="2" path="${DOCUMENTS}/Battery-ANE/native_extension/ane/BatteryANE.ane"/>
-      <libraryPathEntry kind="5" linkType="2" path="android_dependencies/com.tuarua.frekotlin.ane"/>
+      <libraryPathEntry kind="5" linkType="2" path="android_dependencies/com.tuarua.frekotlin-1.8.0.ane"/>
       <libraryPathEntry kind="5" linkType="2" path="android_dependencies/com.google.code.gson.gson-2.8.4.ane"/>
     </libraryPath>
     <sourceAttachmentPath/>
@@ -70,7 +70,7 @@
         <airExcludes/>
         <anePaths>
           <anePathEntry path="${DOCUMENTS}/Battery-ANE/native_extension/ane/BatteryANE.ane"/>
-          <anePathEntry path="android_dependencies/com.tuarua.frekotlin.ane"/>
+          <anePathEntry path="android_dependencies/com.tuarua.frekotlin-1.8.0.ane"/>
           <anePathEntry path="android_dependencies/com.google.code.gson.gson-2.8.4.ane"/>
         </anePaths>
       </airSettings>
