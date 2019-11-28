@@ -39,6 +39,8 @@ public class SwiftController: NSObject {
             props["state"] = 0
         case .unplugged:
             props["state"] = 3
+        @unknown default:
+            props["state"] = 0
         }
         self.dispatchEvent(name: StateEvent.ON_CHANGE, value: JSON(props).description)
     }
@@ -128,6 +130,8 @@ public class SwiftController: NSObject {
             ret = 3
         case .full:
             ret = 2
+        @unknown default:
+            ret = 0
         }
         return ret.toFREObject()
     }
