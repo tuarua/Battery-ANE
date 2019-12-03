@@ -15,6 +15,7 @@
 
 import Foundation
 import FreSwift
+import SwiftyJSON
 
 public class SwiftController: NSObject {
     public static var TAG = "SwiftController"
