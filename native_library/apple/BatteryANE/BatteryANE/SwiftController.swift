@@ -70,7 +70,7 @@ public class SwiftController: NSObject {
     func addEventListener(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         guard argc > 0,
             let type = String(argv[0]) else {
-                return FreArgError(message: "addEventListener").getError(#file, #line, #column)
+                return FreArgError().getError()
         }
         if asListeners.contains(type) {
             return nil
@@ -98,7 +98,7 @@ public class SwiftController: NSObject {
     func removeEventListener(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         guard argc > 0,
             let type = String(argv[0]) else {
-                return FreArgError(message: "removeEventListener").getError(#file, #line, #column)
+                return FreArgError().getError()
         }
         if !asListeners.contains(type) {
             return nil
