@@ -1,6 +1,6 @@
 package {
 
-import com.tuarua.BatteryANE;
+import com.tuarua.Battery;
 import com.tuarua.battery.BatteryState;
 import com.tuarua.battery.events.BatteryEvent;
 import com.tuarua.battery.events.StateEvent;
@@ -20,7 +20,7 @@ import views.SimpleButton;
 public class StarlingRoot extends Sprite {
     private var btnLevel:SimpleButton = new SimpleButton("Get Level");
     private var btnIsCharging:SimpleButton = new SimpleButton("Get State");
-    private var battery:BatteryANE;
+    private var battery:Battery;
     private var statusLabel:TextField;
 
     public function StarlingRoot() {
@@ -30,7 +30,7 @@ public class StarlingRoot extends Sprite {
 
     public function start():void {
         try {
-            battery = BatteryANE.battery;
+            battery = Battery.shared();
             battery.addEventListener(BatteryEvent.ON_CHANGE, onBatteryChange);
             battery.addEventListener(StateEvent.ON_CHANGE, onStateChange);
             initMenu();
@@ -105,7 +105,7 @@ public class StarlingRoot extends Sprite {
     }
 
     private function onExiting(event:Event):void {
-        BatteryANE.dispose();
+        Battery.dispose();
     }
 
 }

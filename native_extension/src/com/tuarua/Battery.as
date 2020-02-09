@@ -18,28 +18,26 @@ import com.tuarua.fre.ANEError;
 
 import flash.events.EventDispatcher;
 
-public class BatteryANE extends EventDispatcher {
-    private var _isInited:Boolean;
-    private static var _battery:BatteryANE;
+public class Battery extends EventDispatcher {
+    private static var _shared:Battery;
 
     /** @private */
-    public function BatteryANE() {
-        if (_battery) {
-            throw new Error(BatteryANEContext.NAME + " is a singleton, use .battery");
+    public function Battery() {
+        if (_shared) {
+            throw new Error(BatteryANEContext.NAME + " is a singleton, use .shared()");
         }
         if (BatteryANEContext.context) {
-            var theRet:* = BatteryANEContext.context.call("init");
-            if (theRet is ANEError) throw theRet as ANEError;
-            _isInited = theRet as Boolean;
+            var ret:* = BatteryANEContext.context.call("init");
+            if (ret is ANEError) throw ret as ANEError;
         }
-        _battery = this;
+        _shared = this;
     }
 
-    public static function get battery():BatteryANE {
-        if (_battery == null) {
-            new BatteryANE();
+    public static function shared():Battery {
+        if (_shared == null) {
+            new Battery();
         }
-        return _battery;
+        return _shared;
     }
 
     /**
@@ -54,7 +52,6 @@ public class BatteryANE extends EventDispatcher {
     override public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0,
                                               useWeakReference:Boolean = false):void {
         super.addEventListener(type, listener, useCapture, priority, useWeakReference);
-        if (!safetyCheck()) return;
         BatteryANEContext.context.call("addEventListener", type);
     }
 
@@ -67,41 +64,25 @@ public class BatteryANE extends EventDispatcher {
      */
     override public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void {
         super.removeEventListener(type, listener, useCapture);
-        if (!safetyCheck()) return;
         BatteryANEContext.context.call("removeEventListener", type);
     }
 
-
     public function get state():int {
-        var theRet:* = BatteryANEContext.context.call("getState");
-        if (theRet is ANEError) throw theRet as ANEError;
-        return theRet as int;
+        var ret:* = BatteryANEContext.context.call("getState");
+        if (ret is ANEError) throw ret as ANEError;
+        return ret as int;
     }
 
     public function get level():Number {
-        var theRet:* = BatteryANEContext.context.call("getLevel");
-        if (theRet is ANEError) throw theRet as ANEError;
-        return theRet as Number;
+        var ret:* = BatteryANEContext.context.call("getLevel");
+        if (ret is ANEError) throw ret as ANEError;
+        return ret as Number;
     }
 
     public static function dispose():void {
         if (BatteryANEContext.context) {
             BatteryANEContext.dispose();
         }
-    }
-
-    /** @return whether we have inited */
-    public function get isInited():Boolean {
-        return _isInited;
-    }
-
-    /** @private */
-    private function safetyCheck():Boolean {
-        if (!_isInited || BatteryANEContext.isDisposed) {
-            trace("You need to init first");
-            return false;
-        }
-        return true;
     }
 
 }
