@@ -59,7 +59,7 @@ You will need:
 - AIR 33.0.2.338+
 - Android Studio 3 if you wish to edit the Android source
 - Xcode 11.3
-- * wget on macOS via `brew install wget`
+- wget on macOS via `brew install wget`
 - Powershell on Windows
 
 ### References
