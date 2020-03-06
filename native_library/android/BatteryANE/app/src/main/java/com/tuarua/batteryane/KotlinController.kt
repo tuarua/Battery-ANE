@@ -17,7 +17,13 @@ package com.tuarua.batteryane
 
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Configuration
 import android.os.BatteryManager
+import com.adobe.air.AndroidActivityWrapper
+import com.adobe.air.AndroidActivityWrapper.ActivityState.PAUSED
+import com.adobe.air.AndroidActivityWrapper.ActivityState.RESUMED
+import com.adobe.air.FreKotlinActivityResultCallback
+import com.adobe.air.FreKotlinStateChangeCallback
 import com.adobe.fre.FREContext
 import com.adobe.fre.FREObject
 import com.tuarua.batteryane.data.BatteryEvent
@@ -26,7 +32,7 @@ import com.tuarua.batteryane.data.StateEvent
 import com.tuarua.frekotlin.*
 
 @Suppress("unused", "UNUSED_PARAMETER", "UNCHECKED_CAST")
-class KotlinController : FreKotlinMainController {
+class KotlinController : FreKotlinMainController, FreKotlinStateChangeCallback, FreKotlinActivityResultCallback {
 
     private var asListeners: MutableList<String> = mutableListOf()
     private var batteryReceiver: BatteryReceiver? = null
@@ -64,7 +70,7 @@ class KotlinController : FreKotlinMainController {
     }
 
     fun addEventListener(ctx: FREContext, argv: FREArgv): FREObject? {
-        argv.takeIf { argv.size > 0 } ?: return FreArgException("addEventListener")
+        argv.takeIf { argv.size > 0 } ?: return FreArgException()
         val type = String(argv[0]) ?: return null
         if (asListeners.contains(type)) return null
         asListeners.add(type)
@@ -89,7 +95,7 @@ class KotlinController : FreKotlinMainController {
     }
 
     fun removeEventListener(ctx: FREContext, argv: FREArgv): FREObject? {
-        argv.takeIf { argv.size > 0 } ?: return FreArgException("removeEventListener")
+        argv.takeIf { argv.size > 0 } ?: return FreArgException()
         val type = String(argv[0]) ?: return null
         if (!asListeners.contains(type)) return null
         asListeners.remove(type)
@@ -117,10 +123,31 @@ class KotlinController : FreKotlinMainController {
         pauseReceivers()
     }
 
-    override fun onPaused() {
-        super.onPaused()
-        pauseReceivers()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
     }
+
+    override fun onConfigurationChanged(configuration: Configuration?) {
+    }
+
+    override fun onActivityStateChanged(activityState: AndroidActivityWrapper.ActivityState?) {
+        when (activityState) {
+            RESUMED -> {
+                if (batteryReceiver != null && batteryLowFilter != null && batteryOkayFilter != null) {
+                    context?.activity?.applicationContext?.registerReceiver(batteryReceiver, batteryLowFilter)
+                    context?.activity?.applicationContext?.registerReceiver(batteryReceiver, batteryOkayFilter)
+                }
+                if (powerConnectionReceiver != null && powerConnectionFilter != null && powerDisconnectionFilter != null) {
+                    context?.activity?.applicationContext?.registerReceiver(powerConnectionReceiver, powerConnectionFilter)
+                    context?.activity?.applicationContext?.registerReceiver(powerConnectionReceiver, powerDisconnectionFilter)
+                }
+            }
+            PAUSED -> {
+                pauseReceivers()
+            }
+            else -> return
+        }
+    }
+
 
     private fun pauseReceivers() {
         if (batteryReceiver != null) {
@@ -131,19 +158,7 @@ class KotlinController : FreKotlinMainController {
         }
     }
 
-    override fun onResumed() {
-        super.onResumed()
-        if (batteryReceiver != null && batteryLowFilter != null && batteryOkayFilter != null) {
-            context?.activity?.applicationContext?.registerReceiver(batteryReceiver, batteryLowFilter)
-            context?.activity?.applicationContext?.registerReceiver(batteryReceiver, batteryOkayFilter)
-        }
-        if (powerConnectionReceiver != null && powerConnectionFilter != null && powerDisconnectionFilter != null) {
-            context?.activity?.applicationContext?.registerReceiver(powerConnectionReceiver, powerConnectionFilter)
-            context?.activity?.applicationContext?.registerReceiver(powerConnectionReceiver, powerDisconnectionFilter)
-        }
-    }
-
-    override val TAG: String
+    override val TAG: String?
         get() = this::class.java.simpleName
     private var _context: FREContext? = null
     override var context: FREContext?

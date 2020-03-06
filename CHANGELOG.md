@@ -1,3 +1,8 @@
+### 1.3.0
+- AND: Updated to FreKotlin 1.9.5
+- AND: Updated to Gson 2.8.6
+- iOS: Updated to FreSwift 4.3.0
+
 ### 1.2.0
 - AND: Updated to FreKotlin 1.8.0
 - Updated to AIR 33 ARM 64bit

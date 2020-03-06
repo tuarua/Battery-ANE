@@ -25,7 +25,6 @@ public class BatteryANEContext {
     internal static const NAME:String = "BatteryANE";
     internal static const TRACE:String = "TRACE";
     private static var _context:ExtensionContext;
-    private static var _isDisposed:Boolean;
     private static var argsAsJSON:Object;
 
     public function BatteryANEContext() {
@@ -36,7 +35,6 @@ public class BatteryANEContext {
             try {
                 _context = ExtensionContext.createExtensionContext("com.tuarua." + NAME, null);
                 _context.addEventListener(StatusEvent.STATUS, gotEvent);
-                _isDisposed = false;
             } catch (e:Error) {
                 throw new Error("ANE " + NAME + " not created properly.  Future calls will fail.");
             }
@@ -52,7 +50,7 @@ public class BatteryANEContext {
             case BatteryEvent.ON_CHANGE:
                 try {
                     argsAsJSON = JSON.parse(event.code);
-                    BatteryANE.battery.dispatchEvent(new BatteryEvent(event.level, argsAsJSON.isLow));
+                    Battery.shared().dispatchEvent(new BatteryEvent(event.level, argsAsJSON.isLow));
                 } catch (e:Error) {
                     trace(e.message);
                 }
@@ -60,7 +58,7 @@ public class BatteryANEContext {
             case StateEvent.ON_CHANGE:
                 try {
                     argsAsJSON = JSON.parse(event.code);
-                    BatteryANE.battery.dispatchEvent(new StateEvent(event.level, argsAsJSON.state));
+                    Battery.shared().dispatchEvent(new StateEvent(event.level, argsAsJSON.state));
                 } catch (e:Error) {
                     trace(e.message);
                 }
@@ -70,15 +68,10 @@ public class BatteryANEContext {
 
     public static function dispose():void {
         if (_context == null) return;
-        _isDisposed = true;
         trace("[" + NAME + "] Unloading ANE...");
         _context.removeEventListener(StatusEvent.STATUS, gotEvent);
         _context.dispose();
         _context = null;
-    }
-
-    public static function get isDisposed():Boolean {
-        return _isDisposed;
     }
 }
 }

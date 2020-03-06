@@ -17,7 +17,7 @@
 #import "BatteryANE_oc.h"
 #import <BatteryANE_FW/BatteryANE_FW.h>
 
-#define FRE_OBJC_BRIDGE TRBAT_FlashRuntimeExtensionsBridge // use unique prefix throughout to prevent clashes with other ANEs
+#define FRE_OBJC_BRIDGE TRBAT_FlashRuntimeExtensionsBridge
 @interface FRE_OBJC_BRIDGE : NSObject<FreSwiftBridgeProtocol>
 @end
 @implementation FRE_OBJC_BRIDGE {
@@ -26,13 +26,9 @@ FRE_OBJC_BRIDGE_FUNCS
 @end
 
 @implementation BatteryANE_LIB
-SWIFT_DECL(TRBAT) // use unique prefix throughout to prevent clashes with other ANEs
+SWIFT_DECL(TRBAT)
 CONTEXT_INIT(TRBAT) {
     SWIFT_INITS(TRBAT)
-    
-    /**************************************************************************/
-    /******* MAKE SURE TO ADD FUNCTIONS HERE THE SAME AS SWIFT CONTROLLER *****/
-    /**************************************************************************/
     
     static FRENamedFunction extensionFunctions[] =
     {
@@ -42,10 +38,7 @@ CONTEXT_INIT(TRBAT) {
         ,MAP_FUNCTION(TRBAT, getState)
         ,MAP_FUNCTION(TRBAT, getLevel)
     };
-    
-    /**************************************************************************/
-    /**************************************************************************/
-    
+
     SET_FUNCTIONS
     
 }

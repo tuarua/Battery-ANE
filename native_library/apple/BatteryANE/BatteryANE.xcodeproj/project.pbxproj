@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		907FA0352396DEAC00A02384 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 907FA0342396DEAC00A02384 /* SwiftyJSON */; };
 		CE05603F1FB25CE200D06976 /* FreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE05603E1FB25CE200D06976 /* FreSwift.framework */; };
 		CE0560401FB25CE200D06976 /* FreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE05603E1FB25CE200D06976 /* FreSwift.framework */; };
 		CE0560431FB25D1B00D06976 /* SwiftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0560411FB25D1B00D06976 /* SwiftController.swift */; };
@@ -18,8 +19,6 @@
 		CEBD78C92057198700ABE05A /* SwiftController+FreSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD78C82057198700ABE05A /* SwiftController+FreSwift.swift */; };
 		CEBD78CB20571A5200ABE05A /* BatteryANE.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87F4781FB259DB005CF7DF /* BatteryANE.m */; };
 		CEDE08CB206FF32B0000824A /* StateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE08CA206FF32B0000824A /* StateEvent.swift */; };
-		CEDE08CF206FF4D00000824A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE08CD206FF4D00000824A /* SwiftyJSON.swift */; };
-		CEDE08D0206FF4D00000824A /* SwiftyJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = CEDE08CE206FF4D00000824A /* SwiftyJSON.h */; };
 		CEDE08D220701F300000824A /* BatteryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE08D120701F300000824A /* BatteryEvent.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +45,6 @@
 		CEBD78C42057184B00ABE05A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CEBD78C82057198700ABE05A /* SwiftController+FreSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftController+FreSwift.swift"; sourceTree = "<group>"; };
 		CEDE08CA206FF32B0000824A /* StateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateEvent.swift; sourceTree = "<group>"; };
-		CEDE08CD206FF4D00000824A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		CEDE08CE206FF4D00000824A /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
 		CEDE08D120701F300000824A /* BatteryEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907FA0352396DEAC00A02384 /* SwiftyJSON in Frameworks */,
 				CE0560401FB25CE200D06976 /* FreSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,7 +100,6 @@
 		CEBD78C52057192600ABE05A /* BatteryANE */ = {
 			isa = PBXGroup;
 			children = (
-				CEDE08CC206FF4D00000824A /* SwiftyJSON */,
 				CEDE08C6206FF1C80000824A /* Events */,
 				CEBD78C72057195500ABE05A /* Misc */,
 				CEBD78C62057194000ABE05A /* Headers */,
@@ -140,15 +137,6 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
-		CEDE08CC206FF4D00000824A /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				CEDE08CD206FF4D00000824A /* SwiftyJSON.swift */,
-				CEDE08CE206FF4D00000824A /* SwiftyJSON.h */,
-			);
-			path = SwiftyJSON;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -165,7 +153,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDE08D0206FF4D00000824A /* SwiftyJSON.h in Headers */,
 				CE87F4871FB259FA005CF7DF /* BatteryANE_FW.h in Headers */,
 				CE05604F1FB25E9F00D06976 /* FreMacros.h in Headers */,
 			);
@@ -207,6 +194,9 @@
 			dependencies = (
 			);
 			name = BatteryANE_FW;
+			packageProductDependencies = (
+				907FA0342396DEAC00A02384 /* SwiftyJSON */,
+			);
 			productName = HelloWorldANE_FW;
 			productReference = CE87F4831FB259FA005CF7DF /* BatteryANE_FW.framework */;
 			productType = "com.apple.product-type.framework";
@@ -217,7 +207,7 @@
 		CE87F45D1FB259C9005CF7DF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Tua Rua Ltd";
 				TargetAttributes = {
 					CE87F4741FB259DB005CF7DF = {
@@ -227,19 +217,23 @@
 					};
 					CE87F4821FB259FA005CF7DF = {
 						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Manual;
 					};
 				};
 			};
 			buildConfigurationList = CE87F4601FB259C9005CF7DF /* Build configuration list for PBXProject "BatteryANE" */;
 			compatibilityVersion = "Xcode 10.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CE87F45C1FB259C9005CF7DF;
+			packageReferences = (
+				907FA0332396DEAC00A02384 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = CE87F4661FB259C9005CF7DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "../../../native_extension/ane/build_mobile.sh\n";
+			shellScript = "../../../native_extension/ane/build.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -296,7 +290,6 @@
 				CE0560431FB25D1B00D06976 /* SwiftController.swift in Sources */,
 				CEBD78C92057198700ABE05A /* SwiftController+FreSwift.swift in Sources */,
 				CEDE08CB206FF32B0000824A /* StateEvent.swift in Sources */,
-				CEDE08CF206FF4D00000824A /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -373,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -505,7 +500,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -545,7 +540,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -583,6 +578,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		907FA0332396DEAC00A02384 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		907FA0342396DEAC00A02384 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907FA0332396DEAC00A02384 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE87F45D1FB259C9005CF7DF /* Project object */;
 }

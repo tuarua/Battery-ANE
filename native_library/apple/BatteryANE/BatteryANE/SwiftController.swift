@@ -15,6 +15,7 @@
 
 import Foundation
 import FreSwift
+import SwiftyJSON
 
 public class SwiftController: NSObject {
     public static var TAG = "SwiftController"
@@ -39,6 +40,8 @@ public class SwiftController: NSObject {
             props["state"] = 0
         case .unplugged:
             props["state"] = 3
+        @unknown default:
+            props["state"] = 0
         }
         self.dispatchEvent(name: StateEvent.ON_CHANGE, value: JSON(props).description)
     }
@@ -67,7 +70,7 @@ public class SwiftController: NSObject {
     func addEventListener(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         guard argc > 0,
             let type = String(argv[0]) else {
-                return FreArgError(message: "addEventListener").getError(#file, #line, #column)
+                return FreArgError().getError()
         }
         if asListeners.contains(type) {
             return nil
@@ -95,7 +98,7 @@ public class SwiftController: NSObject {
     func removeEventListener(ctx: FREContext, argc: FREArgc, argv: FREArgv) -> FREObject? {
         guard argc > 0,
             let type = String(argv[0]) else {
-                return FreArgError(message: "removeEventListener").getError(#file, #line, #column)
+                return FreArgError().getError()
         }
         if !asListeners.contains(type) {
             return nil
@@ -128,6 +131,8 @@ public class SwiftController: NSObject {
             ret = 3
         case .full:
             ret = 2
+        @unknown default:
+            ret = 0
         }
         return ret.toFREObject()
     }
