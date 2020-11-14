@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BatteryANE.iml" filepath="$PROJECT_DIR$/BatteryANE.iml" group="BatteryANE" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BatteryANE/app" />
+      <module fileurl="file://$PROJECT_DIR$/BatteryANE.iml" filepath="$PROJECT_DIR$/BatteryANE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.iml" />
     </modules>
   </component>
 </project>
