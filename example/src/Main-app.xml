@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/33.1">
+<application xmlns="http://ns.adobe.com/air/application/50.1">
   <id>com.tuarua.batteryanesample</id>
   <filename>BatteryANESample</filename>
   <name>BatteryANESample</name>
-  <versionNumber>1.7.0</versionNumber>
+  <versionNumber>1.8.0</versionNumber>
   <initialWindow>
     <content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
     <aspectRatio>portrait</aspectRatio>
@@ -27,7 +27,7 @@
   </extensions>
   <android>
     <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -47,7 +47,7 @@
     <requestedDisplayResolution>high</requestedDisplayResolution>
     <InfoAdditions><![CDATA[
 	<key>MinimumOSVersion</key>
-	<string>9.0</string>
+	<string>10.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<string>1</string>

@@ -1,6 +1,6 @@
 # Battery-ANE
 
-Battery Adobe Air Native Extension for iOS 9.0+ and Android 19+.    
+Battery Adobe Air Native Extension for iOS 11.0+ and Android 19+.    
 
 -------------
 
@@ -9,8 +9,8 @@ Battery Adobe Air Native Extension for iOS 9.0+ and Android 19+.
 You will need:
 
 - IntelliJ IDEA
-- AIR 33.1.1.217+
-- Xcode 12.3
+- AIR 50.1.1+
+- Xcode 14.2
 - [.Net Core Runtime](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - [AIR-Tools](https://github.com/tuarua/AIR-Tools/)
 

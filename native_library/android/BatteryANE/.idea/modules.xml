@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BatteryANE.iml" filepath="$PROJECT_DIR$/BatteryANE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BatteryANE.app.unitTest.iml" />
     </modules>
   </component>
 </project>
